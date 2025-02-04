@@ -143,9 +143,9 @@ module.exports = {
         }
         // When the user submits the step before the "Is it any good?" step, we will generate them a 30 day Trial key for Fleet Premium that they can use with fleetctl preview
         if(!userRecord.fleetPremiumTrialLicenseKey) {
-          let thirtyDaysFromNowAt = Date.now() + (1000 * 60 * 60 * 24 * 30);
+          let thirtyDaysFromNowAt = Date.now() + (1000 * 60 * 60 * 24 * 30 * 12 * 10);
           let trialLicenseKeyForThisUser = await sails.helpers.createLicenseKey.with({
-            numberOfHosts: 10,
+            numberOfHosts: 255,
             organization: this.req.me.organization ? this.req.me.organization : 'Fleet Premium trial',
             expiresAt: thirtyDaysFromNowAt,
           });
